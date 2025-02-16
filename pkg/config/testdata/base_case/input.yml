@@ -1,0 +1,19 @@
+decks:
+  - name: Stomp stomp
+    colors: G
+    art: ./testdata/base_case/grizzly_bears.png
+    cards:
+      - 1 Llanowar Elves G
+      - 1 Grizzly Bears 1G
+      - 1 Goldvein Hydra XG
+      - 17 Forest -
+  - name: Taste the rainbow
+    colors: WUBRG
+    art: ./testdata/base_case/progenitus.png
+    cards:
+      - 5 Progenitus WWUUBBRRGG
+      - 3 Plains -
+      - 3 Island -
+      - 3 Swamp -
+      - 3 Mountain -
+      - 3 Forest -

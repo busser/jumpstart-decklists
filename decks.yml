@@ -1,0 +1,179 @@
+decks:
+  - name: Chats
+    colors: W
+    art: ./backgrounds/chats/image.png
+    cards:
+      - 1 Avant-garde léonine W
+      - 1 Consécration W
+      - 1 Frappe d’Elspeth W
+      - 1 Lions des savanes W
+      - 1 Chasseur serviable 1W
+      - 1 Pacifisme 1W
+      - 1 Chasseciel léonin WW
+      - 1 Fier parent 2W
+      - 1 Sauveur félidar 3W
+      - 1 Jazal Crinièredor 2WW
+      - 1 Édit angélique 4W
+      - 1 Léonin ingénieux 4W
+      - 1 Havre inexploré -
+      - 7 Plaine -
+  - name: Soins
+    colors: W
+    art: ./backgrounds/soins/image.jpg
+    cards:
+      - 1 Sanctificateur de l’arrière-pays W
+      - 1 Katana à dégaine rapide 2
+      - 1 Frère de bande d’Ajani 1W
+      - 1 Volonté inflexible 1W
+      - 1 Soldat de l’évêque 1W
+      - 1 Riposte mortelle 1W
+      - 1 Ange éblouissant 2W
+      - 1 Brigadier inspirateur 2W
+      - 1 Prière d’emprisonnement 3W
+      - 1 Paladine jumelame 3W
+      - 1 Héraut de la foi 3WW
+      - 1 Dragon ancestral 4WW
+      - 1 Havre inexploré -
+      - 7 Plaine -
+  - name: Pirates
+    colors: U
+    art: ./backgrounds/pirates/image.jpg
+    cards:
+      - 1 Marin spectral U
+      - 1 Option U
+      - 1 Surineur né des embruns 1U
+      - 1 Dévoré par les piranhas 1U
+      - 1 Corsaire à voile volante 1U
+      - 1 Capitaine corsaire 2U
+      - 1 Révocation 1UU
+      - 1 Espionne de la Flotte de la tempête 2U
+      - 1 Coutelas de pirate 3
+      - 1 Videur à gros aileron 3U
+      - 1 Boucanier de vaisseau volant 3UU
+      - 1 Terreur tolariane 6U
+      - 1 Havre inexploré -
+      - 7 Île -
+  - name: Sorciers
+    colors: U
+    art: ./backgrounds/sorciers/image.jpg
+    cards:
+      - 1 Distraction fugace U
+      - 1 Archéologue mystique 1U
+      - 1 Mystique malicieux 1U
+      - 1 Embrouilleur burrog 1U
+      - 1 En plein Roulis 1U
+      - 1 Sorcière instruite 2U
+      - 1 Mage d’exclusion 2U
+      - 1 Étude rapide 2U
+      - 1 Collet de lumière stellaire 2U
+      - 1 Mage céleste clinquant 3U
+      - 1 Révélation ésotérique 3UU
+      - 1 Élémental de Valbise 4U
+      - 1 Havre inexploré -
+      - 7 Île -
+  - name: Vampires
+    colors: B
+    art: ./backgrounds/vampires/image.jpg
+    cards:
+      - 1 Nouveau-né vampire B
+      - 1 Instant d’envie 1B
+      - 1 Intrus vampire 1B
+      - 1 Offrir l’immortalité 1B
+      - 1 Sorcier de sang vengeur 1B
+      - 1 Faim récalcitrante 2B
+      - 1 Vampirien 2B
+      - 1 Voleuse de sang de Stromkirk 2B
+      - 1 Chute du héros 1BB
+      - 1 Vampire patricien 3B
+      - 1 Collectrice de la dîme de sang 4B
+      - 1 Fauteurs de troubles de la croisée 5B
+      - 1 Havre inexploré -
+      - 7 Marais -
+  - name: Morts-vivants
+    colors: B
+    art: ./backgrounds/morts-vivants/image.jpg
+    cards:
+      - 1 Goule du diregraf B
+      - 1 Dévoré vivant B
+      - 1 Malveillance immortelle B
+      - 1 Goule famélique 1B
+      - 1 Squelette réassemblable 1B
+      - 1 Recrutement au cimetière 1B
+      - 1 Baron de la mort 1BB
+      - 1 Corbeau de mauvais augure 2B
+      - 1 Complot mortel 3B
+      - 1 Archer squelette 3B
+      - 1 Escogriffe suspect 3B
+      - 1 Jumeaux de Maälfeld 5B
+      - 1 Havre inexploré -
+      - 7 Marais -
+  - name: Gobelins
+    colors: R
+    art: ./backgrounds/gobelins/image.jpg
+    cards:
+      - 1 Gobelin hystérique R
+      - 1 Fureur embrasée R
+      - 1 Bombe incendiaire gobeline 1
+      - 1 Chair à dragon 1R
+      - 1 Oriflamme gobeline 1R
+      - 1 Mathurin gobelin 1R
+      - 1 Grenadière de volée 2R
+      - 1 Contrebandier gobelin 2R
+      - 1 Bonnet-rouge enragé 2R
+      - 1 Shamane à crécelle de guerre 3R
+      - 1 Vétéran de la volée 3R
+      - 1 Salve incinératrice 4R
+      - 1 Havre inexploré -
+      - 7 Montagne -
+  - name: Fournaise
+    colors: R
+    art: ./backgrounds/fournaise/image.jpg
+    cards:
+      - 1 Servant du seigneur-dragon 1R
+      - 1 Cavalier-dragon kargan 1R
+      - 1 Feu du dragon dévastateur 1R
+      - 1 Annihilation ardente 2R
+      - 1 Dragonnet cracheur de feu 2R
+      - 1 Orbe des dragons de cornaline 2R
+      - 1 S’emparer du butin 2R
+      - 1 Géante ratisseciel 2RR
+      - 1 Élémental de feu 3RR
+      - 1 Dragon insatiable 4R
+      - 1 Terreur du mont Vélius 5RR
+      - 1 Havre inexploré -
+      - 8 Montagne -
+  - name: Elfes
+    colors: G
+    art: ./backgrounds/elfes/image.jpg
+    cards:
+      - 1 Elfes de Llanowar G
+      - 1 Voile en peau de serpent G
+      - 1 Élite de Dwynen 1G
+      - 1 Archer de Sylvépine 1G
+      - 1 Archidruide elfe 1GG
+      - 1 Ranger frère des bêtes 2G
+      - 1 Coup d’abattage 2G
+      - 1 Ailes brisées 2G
+      - 1 Replanteur elfe 2GG
+      - 1 Invocatrice au cœur sauvage 2GG
+      - 1 Gardesente des Tajuru 4G
+      - 1 Invocation de Joraga 4GG
+      - 1 Havre inexploré -
+      - 7 Forêt -
+  - name: Primitif
+    colors: G
+    art: ./backgrounds/primitif/image.jpg
+    cards:
+      - 1 Croissance gigantesque G
+      - 1 Bibliothécaire modérée G
+      - 1 Scrotch ! 1G
+      - 1 Fléau de bois sauvage XG
+      - 1 Ourson 1G
+      - 1 Druidesse de l’Auvent 1G
+      - 1 Nouveaux horizons 2G
+      - 1 Brontodonte farouche 1GG
+      - 1 Sentinelle magnigoth 3G
+      - 1 Mammouth agressif 3GGG
+      - 1 Amélioration biosynthétique 4GG
+      - 1 Havre inexploré -
+      - 8 Forêt -

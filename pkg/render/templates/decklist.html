@@ -1,0 +1,29 @@
+<div class="decklist">
+  <div
+    class="decklist-background"
+    style="background-image: url(data:image/png;base64,{{ .ArtBase64 }})"
+  ></div>
+  <div class="decklist-name"><span>{{ .Name }}</span></div>
+  <div class="decklist-colors">
+    {{- range .Colors }}
+    <div class="mana-symbol mana-symbol-{{ . }}"></div>
+    {{- end }}
+  </div>
+  <div class="decklist-items">
+    {{- range .Cards }}
+    <div class="decklist-item">
+      <div class="count"><span>{{ .Count }}</span></div>
+      <div class="card">
+        {{- with .Card }}
+        <div class="card-name"><span>{{ .Name }}</span></div>
+        <div class="mana-cost">
+          {{- range .ManaCost }}
+          <div class="mana-symbol mana-symbol-{{ . }}"></div>
+          {{- end }}
+        </div>
+        {{- end }}
+      </div>
+    </div>
+    {{- end }}
+  </div>
+</div>

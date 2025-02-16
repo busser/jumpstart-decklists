@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://db.onlinewebfonts.com/c/0f26b3e18150776f5ced203524ea7573?family=HanleyPro-Sans"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://unpkg.com/@saeris/typeface-beleren-bold@latest/index.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <style>
+      .decklist-wrapper {
+    max-width: fit-content
+}
+
+.decklist {
+    --size-ratio: 10;
+    --pixels-per-mm: 1mm;
+    --padding: 0em;
+    --border: 0.7em;
+    
+    /* margin: 1em; */
+    width: calc(63mm * var(--size-ratio) - 2 * (var(--padding) + var(--border)));
+    height: calc(88mm * var(--size-ratio) - 2 * (var(--padding) + var(--border)));
+    padding: var(--padding);
+    /* border-radius: var(--border); */
+    border: var(--border) solid black;
+    font-size: calc(0.9em * var(--size-ratio));
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+.decklist::before {
+    content: "";
+}
+
+.decklist::after {
+    content: "";
+}
+
+.decklist-background {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-size: cover;
+    z-index: -1;
+    background-position: center;
+}
+
+.decklist-name {
+    font-family: "HanleyPro-Sans", sans-serif;
+    font-size: 150%;
+    width: 100%;
+    text-align: center;
+    color: white;
+    background: linear-gradient(
+        to right,
+        rgba(0, 0 ,0, 0.1),
+        rgba(0, 0 ,0, 0.4),
+        rgba(0, 0 ,0, 0.5),
+        rgba(0, 0 ,0, 0.4),
+        rgba(0, 0 ,0, 0.1)
+    )
+}
+
+.decklist-colors {
+    font-size: 200%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.decklist-colors .mana-symbol {
+    margin-bottom: 0;
+}
+
+.decklist-items {
+    padding: 0.4em;
+    margin: 0 0.6em;
+
+    backdrop-filter: blur(0.3em) grayscale(0);
+
+    background: rgba(255, 255, 255, 0.4);
+
+    border-radius: .5em;
+    
+    box-shadow:
+        /* Bottom and right depth effect */
+        inset -0.075em -0.05em 0.1em rgba(255, 255, 255, 0.1),
+        /* Top and left depth effect */
+        inset +0.075em +0.05em 0.1em rgba(255, 255, 255, 0.025),
+        /* Shadow effect */
+        0 0 .2em rgba(0, 0, 0, 0.5),
+        /* Short subsurface effect */
+        inset 0 0 1em 0.5em rgba(255, 255, 255, 0.025),
+        /* Long subsurface effect */
+        inset 0 0 4em 0.5em rgba(255, 255, 255, 0.025);
+}
+
+.decklist-item {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-size: 65%;
+    padding-left: 0.4em;
+    padding-right: 0.4em;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+    --background-opacity: 0.3;
+
+    --shadow-line-size: .1em;
+
+    position: relative;
+}
+
+.decklist-item:before {
+    content: "";
+    height: 0.08em;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    box-shadow: inset 0 0.04em 0.04em rgba(0, 0, 0, .3), inset 0 -0.04em 0.04em rgba(255, 255, 255, .7);
+    top: -0.04em;
+}
+
+.decklist-item:first-of-type:before {
+    box-shadow: none;
+}
+
+.decklist-item:first-of-type {
+    border-top-left-radius: 0.4em;
+    border-top-right-radius: 0.4em;
+}
+
+.decklist-item:last-of-type {
+    border-bottom-left-radius: 0.4em;
+    border-bottom-right-radius: 0.4em;
+}
+
+.count {
+    width: 0.7em;
+    font-family: "Beleren Bold", sans-serif;
+    text-align: center;
+    margin-right: 0.5em;
+    color: #191818;
+
+    text-shadow: -.015em .04em 0.1em #19181840;
+}
+
+.card {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-name {
+    font-family: "Beleren Bold", sans-serif;
+    color: #191818;
+    text-shadow: -.015em .04em 0.1em #19181840;
+}
+
+.mana-cost {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.mana-symbol {
+    width: 0.9em;
+    height: 0.9em;
+    box-shadow: -.03em .08em 0.01em #191818;
+    border-radius: 500em;
+    margin-inline-start: 0.05em;
+    margin-inline-end: 0.05em;
+    margin-bottom: 0.08em;
+}
+
+.mana-symbol-w {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1My45NyA1My45NyI+CiAgICAgICAgICAgIDxwYXRoCiAgICAgICAgICAgICAgZD0iTTI3IDBBMjcgMjcgMCAxMTAgMjcgMjcgMjcgMCAwMTI3IDB6IgogICAgICAgICAgICAgIGZpbGw9IiNmZmZiZDYiCiAgICAgICAgICAgID48L3BhdGg+CiAgICAgICAgICAgIDxwYXRoCiAgICAgICAgICAgICAgZD0iTTQ2LjIzIDI3Ljg1Yy0yLjkgMC0uMjcgMy4zOC00LjIxIDMuMzhhMTYuMjEgMTYuMjEgMCAwMS0zLjEyLS41NSA2LjA3IDYuMDcgMCAwMC0xLjMxIDIuNTZjMCAxLjQ1IDIuNjMgMi44MyAzIDIuODMgMi40OCAwIDMuMjQtMiAzLjI0IDIuNjlhNzEuNDcgNzEuNDcgMCAwMS0xLjM4IDkuMTNjLS4yMS0uNzYtMS42Ni03LTMuOC03LS42MiAwLTEuNTkuODMtMi40Mi44My0xLjY2IDAtMi44My0xLjk0LTMuNTktMy42Ny0xLjg3LjI4LTMuMTggMS4zMi0zLjE4IDMuMjUgMCAzLjY2IDUuMjUgMS4yNSAxLjE3IDUuODgtMi4xNCAyLjM1LTUuNjcgNC4yMS03Ljk0IDYuMTUgMS4xLTEuMzIgMy01LjEyIDMtNi43NyAwLTIuNDItNS4yNi0xLjUzLTIuNDktNy40N2EzLjUxIDMuNTEgMCAwMC0yLjE1LTFjLTYuNDIgMCAxLjE4IDYtNi4wNyA2LS42MyAwLTYuMjMtLjY5LTkuMDYtMS4yNUMxOS43NiAzOS4yNSA3Ljg4IDM3IDE1LjkgMzNjLS4zNS0xLjQ1LTEuMTEtMy4xOC0zLjMyLTMuMTgtMSAwLTEuNDYgMi4wNy0zIDIuNzYtMi43NCAxLjIxLTYuNDctNi4xMi04LjY4LTguNzQgMS44Ni44MyA0LjIyIDIuNjIgNi40OSAyLjYyIDIuNDkgMCAxLjI1LTMuMzggNC4zNi0zLjM4YTEzLjMgMTMuMyAwIDAxMi43Ni44MyA3LjQ4IDcuNDggMCAwMDEuMzItM2MwLTEuMTEtMS45NC0zLTIuODQtMy0xLjU5IDAtMy4zOCAyLTMuMzgtMi43IDAtLjc2IDEtNi4zNiAxLjU4LTkuNDcgMCAuNDkgMS4yNSA3LjMzIDMuNjcgNy4zMy41NSAwIDEuNTktLjgzIDIuNDItLjgzQzIwIDEyLjMgMjAuMzkgMTYgMjAuOTQgMTZhMy41MiAzLjUyIDAgMDAzLjM5LTMuNTJjMC0zLTIuNTYtMi4wNy0yLjU2LTMuNTMgMC0yLjU5IDkuMDUtNy45NSA5LjMzLTguMTktNy43NCAxMC4yNCAyLjIxIDUuMzktLjI4IDE0LjE2YTYuMDYgNi4wNiAwIDAwMi44NCAxLjMyYzMuMjQgMCAxLjUyLTQuMDggMS43Mi00LjYzLjE0LTEgMi44My0xIDMuOC0xIC43NiAwIDYgLjY5IDkuMTkgMS4yNS0yLjQ4Ljc1LTcuMzIgMS40NS03LjMyIDMuMSAwIDEgLjY5IDIuMjkuNjkgMy4zOSAwIDEuNTItMi40MiAyLjQ5LTMuNiAzLjQ2LjY5IDEuMjQuODMgMi42MiAzIDIuNjJzLjU2LTIuMDcgMy4xMS0yLjgzYzMuMzItLjkgNS44OCA1Ljg3IDguOTIgOS4yNi0xLjQ4LS43My00LjczLTMuMDEtNi45NC0zLjAxek0yNi44OCAxNmExMS4xNCAxMS4xNCAwIDAwLTExIDEwLjkyIDExLjI3IDExLjI3IDAgMDAxMSAxMC44NUExMC42NiAxMC42NiAwIDAwMzcuOCAyNi44OCAxMS4xMiAxMS4xMiAwIDAwMjYuODggMTZ6bTAgMjAuNjZBOS44NSA5Ljg1IDAgMDExNyAyNi44OGE5Ljg4IDkuODggMCAwMTE5Ljc2IDAgOS42MiA5LjYyIDAgMDEtOS44OCA5Ljc0eiIKICAgICAgICAgICAgICBmaWxsPSIjMTkxODE4IgogICAgICAgICAgICA+PC9wYXRoPgogICAgICAgICAgPC9zdmc+")
+}
+
+.mana-symbol-u {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1My45NyA1My45NyIgY2xhc3M9ImNzcy05clZsVSIgc3R5bGU9Ii0tbWFuYS1pY29uLXNpemU6IDE5cHg7Ij48cGF0aCBkPSJNMjcgMEEyNyAyNyAwIDExMCAyNyAyNyAyNyAwIDAxMjcgMHoiIGZpbGw9IiNiNWUxZjkiPjwvcGF0aD4gPHBhdGggZD0iTTI3IDQ5LjEzYy05LjUzIDAtMTMuNjEtNy42Ny0xMy42MS0xNC45MiAwLTguODUgOC42My0yMSAxNy41NS0yOC40Ny0xLjEgNS0xIDMuNTItMSA2LjI4IDAgOS41NCAxMC40NCAxNC41MSAxMC40NCAyMy41QTEzLjM0IDEzLjM0IDAgMDEyNyA0OS4xM3ptNy0yMS43N2MuNzYgMi4wOC0xLjUyIDcuNTQtMS41MiA4LjA5YTIuNDEgMi40MSAwIDAwMi40MiAyLjQyYzIuMTQgMCAyLjU1LTIuMDggMi41NS0zLjM5IDAtMS45My0xLjQ1LTYuMDEtMy40NS03LjEyeiIgZmlsbD0iIzE5MTgxOCI+PC9wYXRoPjwvc3ZnPg==")
+}
+
+.mana-symbol-b {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1My45NyA1My45NyIgY2xhc3M9ImNzcy05clZsVSIgc3R5bGU9Ii0tbWFuYS1pY29uLXNpemU6IDE5cHg7Ij48cGF0aCBkPSJNMjcgMEEyNyAyNyAwIDExMCAyNyAyNyAyNyAwIDAxMjcgMHoiIGZpbGw9IiNkMGM2YzIiPjwvcGF0aD4gPHBhdGggZD0iTTM2LjU2IDM2LjQ4djUuNmMwIC4yMS40MSA0LjA4LjQxIDQuMzZzLS4yOCAyLjQxLS40OCAzLjM4bC0zIC42MmMtLjYzLTIuMjgtLjU2LTIuMzUtLjU2LTIuODMgMC0uMjEuMzUtMS44Ni4zNS0yLjA3YTE4IDE4IDAgMDAtLjgzLTIuN2gtMWMtLjU1LjU1LjIxLjgzIDAgMi45MS0xIC43Ni0yLjE0IDEuNDUtMy4yNCAyLjIxLS4wNyAwLS4xNC0uMTQtLjM1LS4xNHYtNC45MWMtLjI4LS41NS0xLjE4LS4yMS0xLjUyLS4yOGwtLjgzIDYuNWE4LjA5IDguMDkgMCAwMS0yLjM1IDBjLS40OC0xLjczLTEtNC40OS0xLjczLTYuNzdoLS42M0ExOS43IDE5LjcgMCAwMDIwIDQ1YzAgLjI4LjM1IDEuODcuMzUgMi4xNVMyMCA0OC45MiAyMCA0OS44MmMtLjA3LjA3LS4wNy4xNC0uMzUuMTQtMyAwLTMuNTItMS41Mi0zLjMxLTMuOTRsLjU1LTguMjljMC0xLjE4IDEuMTctLjQyLS44OS0zLjI1LS4yMS0uMzQtMS4zOS0uMjctMi4xNS0uNDgtMS41OS0uMzUtMy0uNjktNC42My0xLTQuNjMtLjktNC43Ny01LTQuNzctNy42N2EyMS40NiAyMS40NiAwIDAxOC4yNi0xNi43NmMuMzUgMS4zOC43IDMuNjYgMS4xOCA1IC4yLjM1IDEuMzEuMjggMi42OS42MnMyLjc3IDEgNC4yMiAxLjUzYy0uOS0uNy0zLjk0LTIuMzUtNS0zLjgtMS0xLjE4LTEuMTgtNC4zNi0xLjE4LTQuNjQgMC0xLjEgNC45LTIuNjkgNi4xNS0yLjlhMzAgMzAgMCAwMTUuNzMtLjQ4YzQuMjIgMCA5LjI2LjU1IDE0IDQuNDJhMjAuNzIgMjAuNzIgMCAwMS02IDQuMjljMi4yMS4yIDcuMjYtMi43IDcuNTQtMi43Ljc1IDAgMy42NiA0LjIyIDQuMjEgNS4xOGEyNi4zOSAyNi4zOSAwIDAxMyA4LjVjMCAyLjU2LjA3IDIuNjMuMDcgMi44NC0uMDUgMTAuNDctMTIuNzYgNS4wMS0xMi43NiAxMC4wNXpNMTQuNjUgMTkuMzVjLTMuODcgMC02LjY1IDQuMDgtNi42NSA3LjExQzggMzAuMTMgMTIgMzAgMTQuMzcgMzBoMy44YzEuMzguMjEgNC42NC4yMSA0LjY0LTIuMzUgMC0zLjc0LTQuMTUtOC4zLTguMTYtOC4zek0yOS4zNyAzMi4yYTI4Ljc4IDI4Ljc4IDAgMDAtMS41Mi0zLjg3bC0uNzYgOC4wOWMwIC4zNC4zNCAxLS40MiAxYS41Ni41NiAwIDAxLS40MS0uMTRjLS4yMS0yLjE0LS40OC01Ljg3LS40OC02LjM1di0yLjQ2YS42NC42NCAwIDAwLS4zNS0uMjFjLTEuNTIgMS42Ni0yLjM1IDUuMjYtMi4zNSA3LjgxIDAgMS0uMDcgMi45LjU1IDMuNjYgMS42Ni0uMzQuNjMtLjYyIDIuODMtLjYyYTcuMjIgNy4yMiAwIDAxMy4xOS44M2MuODIgMCAuNjgtMy41Mi42OC0zLjczIDAtMy4zMi4yOC0uOTctLjk2LTQuMDF6bTkuNzQtMTIuNzhjLTMuODcgMC03Ljk0IDQuMzUtNy45NCA4LjIyYTIuMjYgMi4yNiAwIDAwMi4zNSAyLjQyaDcuOTRjMS44LS4yMSA0LjUtLjQ4IDQuNS0zLjUzLjA0LTMuMjQtMi45MS03LjExLTYuODUtNy4xMXoiIGZpbGw9IiMxOTE4MTgiPjwvcGF0aD48L3N2Zz4=")
+}
+
+.mana-symbol-r {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1My45NyA1My45NyIgY2xhc3M9ImNzcy05clZsVSIgc3R5bGU9Ii0tbWFuYS1pY29uLXNpemU6IDE5cHg7Ij48cGF0aCBkPSJNMjcgMEEyNyAyNyAwIDExMCAyNyAyNyAyNyAwIDAxMjcgMHoiIGZpbGw9IiNmOGFjOGUiPjwvcGF0aD4gPHBhdGggZD0iTTM3LjY2IDQzLjE5Yy0xIDAtNi40OS40OC02LjQ5IDIuMTQgMCAuNTUgMSAxLjI0IDEuMzEgMS4yNHM0LjU2LjIxIDcuNDYuMjFDMzQuNDEgNTAuMSAyNC44MSA1MCAxOS44MyA1MGMtNy0uMjEtMTEuMTktNy4yNi0xMS4xOS0xMi41OGExMS43MiAxMS43MiAwIDAxMTEuNjgtMTJjMi42OSAwIDQuMjEgMSA1LjM5IDEgNC43NiAwIDguODQtNC4yMSA5Ljk1LTQuMjEtLjM1IDMuMTEtLjc2IDcuMzMtNC44NCA5Ljc0LTIgMS4xOC0zIDIuMjgtMyAzLjM5IDAgMS44NiAyLjgzIDIuMTQgMy4zOSAyLjE0IDIuNTUgMCA1LjI1LTQuMjEgNS02LjIyYTE3IDE3IDAgMDEuMjgtNSA2Ljg1IDYuODUgMCAwMTIuNTUtMy41M2MwIDEuMzItLjkgMi42My0uOSA0LjIyYTUuNDEgNS40MSAwIDAwLjg2IDIuNDJjMS42Ni0uNTUgMi44NC00LjIyIDMuMTgtNy0zLjgtLjIxLTktNC42My04LjA4LTkgLjIuMjEgMi4xNCAzLjY3IDMgMy42NyAxLjg3IDAgLjYzLTcuODgtMy43Mi03Ljg4LTIuNTYgMC0yLjg0IDIuMDctNi40MyAyLjA3QTE0IDE0IDAgMDEyMi43NCAxMGMuMzQtLjU1IDYuNy41NSA2LjctMiAwLTIuMDctNy44MS0zLTkuMTktMy4xNy0xLS4yMS0yLjI4LS4wNy0zLjMyLS4yOGEzMC40NCAzMC40NCAwIDAxOC4yOS0xLjFjMTEuMjcgMCAxOCA1LjY2IDIwLjg3IDE2IDIuMjgtMS44Ny0xLjMxLTguOTItMS42Ni0xMC4wOSAzLjY2IDQuNyA1LjY3IDguOTEgNS42NyAxMy42MSAwIDcuNzQtNS40NiA5Ljc0LTkuMzMgMTUuNDEgMy4zMS0uOSA2LjY0LTEuNzMgOS43NC01LjExYTYuNzMgNi43MyAwIDAxLS43NiAyLjY5Yy0yLjM0IDUuNjQtNi42MyA3LjIzLTEyLjA5IDcuMjN6TTE2LjQ1IDEwLjY0Yy0xLjM5LjYyLTIuMjIgMi43LTIuODQgMy44YTEzLjU1IDEzLjU1IDAgMDEtLjYyLTIuOWMtLjkgMC0zLjE4IDItNC4wOCAyLjU2LjU2LTMuMTEgNC40My03Ljg4IDcuNjEtNy44OCAxLjY1IDAgMy4xLjkgMy4xIDIuNTUgMCAyLjAxLTIuNTUgMS42Ny0zLjE3IDEuODd6bTExLjQgNy4yNmMtMy4xMSAwLTIuNy0zLjM5LTYuMjItNC44NCAxLjM4LTEuMTcgMy41MiAxLjU5IDQuODMgMS41OSAxLjExIDAgMS4xMS0xLjk0IDIuOTEtMS45NGEyLjI4IDIuMjggMCAwMTIuMjggMi40MmMwIDEuOTQtMi43NyAyLjc3LTMuOCAyLjc3eiIgZmlsbD0iIzE5MTgxOCI+PC9wYXRoPjwvc3ZnPg==")
+}
+
+.mana-symbol-g {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1My45NyA1My45NyIgY2xhc3M9ImNzcy05clZsVSIgc3R5bGU9Ii0tbWFuYS1pY29uLXNpemU6IDE5cHg7Ij48cGF0aCBkPSJNMjcgMEEyNyAyNyAwIDExMCAyNyAyNyAyNyAwIDAxMjcgMHoiIGZpbGw9IiNhMmQyYWIiPjwvcGF0aD4gPHBhdGggZD0iTTQ3Ljg5IDMzLjU4YTMuODggMy44OCAwIDAxLTIuMjgtLjc2IDQuMjQgNC4yNCAwIDAxLTEtMS4zMWMtMS0uMDctMy0uMTQtMy4yNS0uMTRhMjQuNTEgMjQuNTEgMCAwMC03LjggMi4zNWMtMS4xMSAxLjMxLTEuNjcgNi41LTEuNjcgNy41MyAwIDIuMjEuMjggMy4zMiAzIDQuMTUuNzYuMjEgMi4wNy42OSAyLjI3LjY5TDM4LjkgNDZjLjU2IDAgMy4yNS4yOCAzLjA1IDEuMzgtLjc3LjI4LTEuOTQtLjM0LTMuMzkuNDJhMTYgMTYgMCAwMDEuOTQgMWMwIC44My0yIC44My0yLjM2LjgzYTIyIDIyIDAgMDEtMy4xLS41NWgtLjljLS4yMS42Mi0uMjEgMS4zMS0uNDIgMi4wNy0yLjM1LS4yLTMuNDUtMi42OS00Ljc3LTIuNjktLjc1IDAtMS45MyAyLjktMS45MyAzLjExLTEuNDUtLjc2LTEuODctMi44My0yLjE1LTMuNTktMS4xLjItMiAyLjE0LTIuNTUgMi45SDIyYy0xLTEtLjU1LTIuOS0xLTIuOWExMi40NiAxMi40NiAwIDAwLTQtLjY5Yy0uMjEgMC0xLjczLjItMi43Ny40MWwtMS45My0uMTRjLjQxLS40MSA0LTMgNi0zIC4yMSAwIC45LjE0IDEuMTEuMTQuNDggMCAyLjYyLS44MyAyLjc2LTEuMzJhOC44NCA4Ljg0IDAgMDAuMjEtMi4yN2MwLTMuODgtMS4zMi03LjI2LTgtOC4zNy0uODIgMi44NC0zLjUyIDMuOTQtNi4yMSAzLjk0cy01LTQtNS01LjY2YTQuODcgNC44NyAwIDAxMi4xNC00LjIyIDQuNjQgNC42NCAwIDAxLTEuNzItMy42NiA0LjM2IDQuMzYgMCAwMTMuODYtNC41NiAyLjY1IDIuNjUgMCAwMTEuNDUtMyA1IDUgMCAwMS0uNzUtMi43IDUuMjQgNS4yNCAwIDAxNS4zMi01LjMyIDUuMzkgNS4zOSAwIDAxNC4wOCAxLjczYzEuNTgtNS4xOCA0LjgzLTYuODQgOC42My02Ljg0IDQuNTYgMCA2Ljg0IDMuODcgNy4wNSAzLjg3YTYuOCA2LjggMCAwMTMuMjUtLjYyYzMuMzEgMCA2LjIxIDIuNDEgNy4yNSA2LjU2LjA3LjIxIDEgLjE0IDEuNTIuNDFhMy4yNCAzLjI0IDAgMDExLjUyIDIuNjMgMy4yMyAzLjIzIDAgMDEtLjU1IDEuMzFjMyAxLjY2IDQuNDIgMy45NCA0LjQyIDYuOTFhNi44NCA2Ljg0IDAgMDEtMSAzLjQ2IDMuNDIgMy40MiAwIDAxMS44IDMgMy43IDMuNyAwIDAxLTMuNTUgMy42em0tMjQuOTUtMS40NWMwLTItMi40OS00LjIxLTQuNy00LjIxYTguNTQgOC41NCAwIDAwLTMuNTkuOWMyLjg0LS4yMSA1LjggMS43OSA4LjI5IDQuMjF6TTE5LjkgMjJjLTEgLjQyLTIuOS41Ni0yLjkgMS43MyAxLjM4LS4yMSAzLjM5Ljc2IDQuNy42OUExNS4zMSAxNS4zMSAwIDAxMTkuOSAyMnptNi0yLjc2YTUuNzUgNS43NSAwIDAwLTItLjI4djFjMCAuNDggMS42NiAxLjk0IDIgMi4yOHptNS44OC0uMjR2NS45NGMyLTEuMTcgMy4xOS0yLjYyIDMuMTItNC41Ni0xLjE4LS41NS0xLjY2LS42Mi0zLjEyLTEuMzh6bTUuMzkgNy42N2MtMi40OCAxLjk0LTMuMTcgMS43My01LjI1IDQuMjJhMjMuNzkgMjMuNzkgMCAwMTYuNzctMi4zNSAyMS4zNiAyMS4zNiAwIDAxLTEuNTItMS44N3oiIGZpbGw9IiMxOTE4MTgiPjwvcGF0aD48L3N2Zz4=")
+}
+
+.mana-symbol-x {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyBkYXRhLW5hbWU9IlgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDUzLjk3IDUzLjk3IiBjbGFzcz0iY3NzLTlyVmxVIiBzdHlsZT0iLS1tYW5hLWljb24tc2l6ZTogMTlweDsiPjxwYXRoIGQ9Ik0yNyAwQTI3IDI3IDAgMTEwIDI3IDI3IDI3IDAgMDEyNyAweiIgZmlsbD0iI2QwYzZjMiI+PC9wYXRoPiA8cGF0aCBkPSJNMjkuNzEgNDEuODhjMi44NC0uMzUgMy44MS0xIDMuODEtMi4xNWEzLjkxIDMuOTEgMCAwMC0xLTIuNDlsLTctOC40MkwyMCAzNS4xN0MxOC41OSAzNi43NiAxNy45IDM4IDE3LjkgMzljMCAxLjU5IDEuMSAyLjQ5IDMuOCAyLjg0djEuNzZIOC4yMnYtMS43MmMzLjM5LS43NiA0LjU2LTEuNTkgNy43NC01LjE5bDguMjktOS40LTkuNi0xMS40Yy0yLjQyLTIuODMtMy41OS0zLjgtNi43Ny00LjE0VjEwaDE1Ljg5djEuNzNjLS44My4xNC0zLjU5LjQ4LTMuNTkgMS44NnYuMjhhMy42NSAzLjY1IDAgMDAxIDIuMTRsNi4zNiA3LjUzIDUuMTEtNi4xNUE0LjU5IDQuNTkgMCAwMDM0IDE0LjQ0YzAtMS40NS0uOS0yLjIxLTMuMzktMi42OVYxMGgxMi42NXYxLjczYTkuNyA5LjcgMCAwMC0yLjI2LjU3Yy0zLjQxIDEuNTItOS42MyA5LjYxLTEyLjE4IDEyLjdMMzkgMzcuMzFjMi40OSAzIDQgNC4wOCA2Ljc4IDQuNTd2MS43MkgyOS43MXoiIGZpbGw9IiMxOTE4MTgiPjwvcGF0aD48L3N2Zz4=")
+}
+
+.mana-symbol-1 {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyBkYXRhLW5hbWU9IjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDUzLjk3IDUzLjk3IiBjbGFzcz0iY3NzLTlyVmxVIiBzdHlsZT0iLS1tYW5hLWljb24tc2l6ZTogMTlweDsiPjxwYXRoIGQ9Ik0yNyAwQTI3IDI3IDAgMTEwIDI3IDI3IDI3IDAgMDEyNyAweiIgZmlsbD0iIzE5MTgxOCI+PC9wYXRoPiA8cGF0aCBkPSJNMjcgMEEyNyAyNyAwIDExMCAyNyAyNyAyNyAwIDAxMjcgMHoiIGZpbGw9IiNkMGM2YzIiPjwvcGF0aD4gPHBhdGggZD0iTTE3IDQzaDIuMzVjMi41NiAwIDMuNjYtMSAzLjY2LTQuNjNWMTcuMTRjMC0zLjk0LTEtNC42My0yLjktNC42M2gtM1Y4SDE5YzMuMzIgMCA0Ljg0LTMuMTggOC43MS0zLjE4SDMxdjMzLjUzYzAgMy41MyAxLjMxIDQuNTYgMy41OSA0LjU2aDIuMDd2NC42M0gxNy4wN3oiIGZpbGw9IiMxOTE4MTgiPjwvcGF0aD48L3N2Zz4=")
+}
+
+.mana-symbol-2 {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyBkYXRhLW5hbWU9IjIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDUzLjk3IDUzLjk3IiBjbGFzcz0iY3NzLTlyVmxVIiBzdHlsZT0iLS1tYW5hLWljb24tc2l6ZTogMTlweDsiPjxwYXRoIGQ9Ik0yNyAwQTI3IDI3IDAgMTEwIDI3IDI3IDI3IDAgMDEyNyAweiIgZmlsbD0iI2QwYzZjMiI+PC9wYXRoPiA8cGF0aCBkPSJNMzIuODIgNDEuMjVjMy41MyAwIDQuNy0uODkgNi41Ny01LjExaDMuNTJsLTMuMzggMTEuNEgxMy42OHYtMy4xMWMyLjIyLTIuNDIgMy44Ny00LjA3IDguMDktOC4yOUE5Mi45MyA5Mi45MyAwIDAwMjkgMjguNGMyLjQxLTIuNyA0Ljc2LTUuNTMgNC43Ni05LjMzIDAtNC4xNS0zLTcuMzItNi4zNi03LjMyLTMuODYgMC03LjQ2IDMtMTAuMTUgOS4yNWwtMy40Ni0xLjMxYzMuMTEtOC45MSA4LjQzLTEzLjgyIDE1LjA3LTEzLjgyQTEyLjA1IDEyLjA1IDAgMDE0MSAxNy44M2MwIDcuNTMtNi45MyAxMi4xNy0xMi4xMSAxNi40NGE5OS4zNCA5OS4zNCAwIDAwLTcuNCA3eiIgZmlsbD0iIzE5MTgxOCI+PC9wYXRoPjwvc3ZnPg==")
+}
+
+.mana-symbol-3 {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyBkYXRhLW5hbWU9IjMiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDUzLjk3IDUzLjk3IiBjbGFzcz0iY3NzLTlyVmxVIiBzdHlsZT0iLS1tYW5hLWljb24tc2l6ZTogMTlweDsiPjxwYXRoIGQ9Ik0yNyAwQTI3IDI3IDAgMTEwIDI3IDI3IDI3IDAgMDEyNyAweiIgZmlsbD0iI2QwYzZjMiI+PC9wYXRoPiA8cGF0aCBkPSJNNDIuNDMgMzIuNDhjMCA4LjctOC4zNiAxNS44Mi0xOCAxNS44MmExNy43NyAxNy43NyAwIDAxLTEwLjY0LTMuMjVsMi0yLjc2YzMuMzggMS43MyA1LjMxIDIuMjEgNy43MyAyLjIxIDYuNTcgMCAxMS44OS00LjkgMTEuODktMTAuNjQgMC00LjA4LTIuNzYtNy02LjI5LTctMS42NiAwLTMuOC42OS02LjQ5IDIuNTZsLTEuNjctMy4yNWE2OC40NiA2OC40NiAwIDAwOC40NC01LjUzYzIuMjEtMS44NyAzLjExLTMuNDUgMy4xMS01LjE4YTQuNDkgNC40OSAwIDAwLTQuNjMtNC4zNWMtMyAwLTYuMjkgMS43OS0xMC40MyA2LjQybC0yLjc3LTIuMTRjMy41Mi01IDguNTctOS41NCAxNS05LjU0IDUuNTMgMCA5LjgxIDMuMTEgOS44MSA4IDAgMy4yNS0xLjU5IDUuMjUtNS42NyA4LjM2IDQuODcuMzIgOC42MSA1LjAxIDguNjEgMTAuMjd6IiBmaWxsPSIjMTkxODE4Ij48L3BhdGg+PC9zdmc+")
+}
+
+.mana-symbol-4 {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyBkYXRhLW5hbWU9IjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDUzLjk3IDUzLjk3IiBjbGFzcz0iY3NzLTlyVmxVIiBzdHlsZT0iLS1tYW5hLWljb24tc2l6ZTogMTlweDsiPjxwYXRoIGQ9Ik0yNyAwQTI3IDI3IDAgMTEwIDI3IDI3IDI3IDAgMDEyNyAweiIgZmlsbD0iI2QwYzZjMiI+PC9wYXRoPiA8cGF0aCBkPSJNMzMuNjYgMzEuOTJjMS4zMS0uMiAyLjA2LS44OSAzLTMuOTNINDBsLTEuMTggOC4yMmgtNS4xNnYyLjY5YzAgNC4xLjk2IDUuMSAzLjM0IDUuMWgxLjl2My41OUgyMS4wN1Y0NGgyYzIuMjEgMCAzLjMxLTEuMTEgMy4zMS01LjA1di0yLjc0SDkuODh2LTQuMzZMMjcuNjQgNS45NGg2em0tMTkuMjkgMGgxMlYxNC4xeiIgZmlsbD0iIzE5MTgxOCI+PC9wYXRoPjwvc3ZnPg==")
+}
+
+.mana-symbol-5 {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyBkYXRhLW5hbWU9IjUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDUzLjk3IDUzLjk3IiBjbGFzcz0iY3NzLTlyVmxVIiBzdHlsZT0iLS1tYW5hLWljb24tc2l6ZTogMTlweDsiPjxwYXRoIGQ9Ik0yNyAwQTI3IDI3IDAgMTEwIDI3IDI3IDI3IDAgMDEyNyAweiIgZmlsbD0iI2QwYzZjMiI+PC9wYXRoPiA8cGF0aCBkPSJNMjAuNzMgMTIuOTJsLTEuMzggNi4yOWExNC4zIDE0LjMgMCAwMTYtMS4xNyAxNC40NSAxNC40NSAwIDAxMTQuOCAxNC41N2MwIDkuMTMtNy43NCAxNS42OS0xOCAxNS42OWEyNy42NyAyNy42NyAwIDAxLTktMS41MmwxLjMxLTMuMzJhMjQuNzQgMjQuNzQgMCAwMDYuMjkgMWM2LjYzIDAgMTIuMDktNSAxMi4wOS0xMSAwLTUuNDYtMy44LTkuMjYtOS4zMy05LjI2YTEwLjEzIDEwLjEzIDAgMDAtNy4yIDIuOGwtMi40Mi0uNDkgNC42My0xOS45SDM0YzIgMCAyLjU2LjA3IDMuMTEtLjY5aDMuMzJsLTEuNTMgN3oiIGZpbGw9IiMxOTE4MTgiPjwvcGF0aD48L3N2Zz4=")
+}
+
+.mana-symbol-6 {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyBkYXRhLW5hbWU9IjYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDUzLjk3IDUzLjk3IiBjbGFzcz0iY3NzLTlyVmxVIiBzdHlsZT0iLS1tYW5hLWljb24tc2l6ZTogMTlweDsiPjxwYXRoIGQ9Ik0yNyAwQTI3IDI3IDAgMTEwIDI3IDI3IDI3IDAgMDEyNyAweiIgZmlsbD0iI2QwYzZjMiI+PC9wYXRoPiA8cGF0aCBkPSJNMTcuNzYgNDRjLTMuMjUtMy41My00Ljg0LTguMDktNC44NC0xMy42OWEyMi41OCAyMi41OCAwIDAxNC42My0xNC40NEMyMi40NiA5LjE5IDI5IDYuMTUgMzcgNi4xNXYzLjQ2YTE2LjExIDE2LjExIDAgMDAtNS4yNi44OSAxNS4zMyAxNS4zMyAwIDAwLTguMjkgNi4wOEExNyAxNyAwIDAwMjEgMjIuOGExMi41OSAxMi41OSAwIDAxOC4xNi0zLjE4YzYuNzcgMCAxMS42MSA1Ljg4IDExLjYxIDEzLjU1IDAgOC4yOS01LjggMTUuMzQtMTMuMTMgMTUuMzRBMTMuNDQgMTMuNDQgMCAwMTE3Ljc2IDQ0em0yLjQ5LTE1Yy0uMDcgMS4xMS0uMDcgMS41Mi0uMDcgMi4yOCAwIDguMDkgMy4zOCAxMy40OCA3LjI1IDEzLjQ4IDMuNTMgMCA2LjA5LTMuNDYgNi4wOS05LjgxIDAtNy4xMi0yLjYzLTEwLjc4LTYuMTYtMTAuNzgtMi44My0uMDUtNS4xOCAxLjUzLTcuMTEgNC44M3oiIGZpbGw9IiMxOTE4MTgiPjwvcGF0aD48L3N2Zz4=")
+}
+
+    </style>
+  </head>
+
+  <body>
+    <div id="decklist-0" class="decklist-wrapper">
+      <div class="decklist">
+  <div
+    class="decklist-background"
+    style="background-image: url(data:image/png;base64,bm90IHJlYWxseSBhbiBpbWFnZSB0byBzYXZlIHNwYWNl)"
+  ></div>
+  <div class="decklist-name"><span>Stomp stomp</span></div>
+  <div class="decklist-colors">
+    <div class="mana-symbol mana-symbol-g"></div>
+  </div>
+  <div class="decklist-items">
+    <div class="decklist-item">
+      <div class="card">
+        <div class="card-name"><span>Llanowar Elves</span></div>
+        <div class="mana-cost">
+          <div class="mana-symbol mana-symbol-g"></div>
+        </div>
+      </div>
+    </div>
+    <div class="decklist-item">
+      <div class="card">
+        <div class="card-name"><span>Grizzly Bears</span></div>
+        <div class="mana-cost">
+          <div class="mana-symbol mana-symbol-1"></div>
+          <div class="mana-symbol mana-symbol-g"></div>
+        </div>
+      </div>
+    </div>
+    <div class="decklist-item">
+      <div class="card">
+        <div class="card-name"><span>Goldvein Hydra</span></div>
+        <div class="mana-cost">
+          <div class="mana-symbol mana-symbol-x"></div>
+          <div class="mana-symbol mana-symbol-g"></div>
+        </div>
+      </div>
+    </div>
+    <div class="decklist-item">
+      <div class="card">
+        <div class="card-name"><span>Forest</span></div>
+        <div class="mana-cost">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+    <div id="decklist-1" class="decklist-wrapper">
+      <div class="decklist">
+  <div
+    class="decklist-background"
+    style="background-image: url(data:image/png;base64,bm90IHJlYWxseSBhbiBpbWFnZSB0byBzYXZlIHNwYWNl)"
+  ></div>
+  <div class="decklist-name"><span>Taste the rainbow</span></div>
+  <div class="decklist-colors">
+    <div class="mana-symbol mana-symbol-w"></div>
+    <div class="mana-symbol mana-symbol-u"></div>
+    <div class="mana-symbol mana-symbol-b"></div>
+    <div class="mana-symbol mana-symbol-r"></div>
+    <div class="mana-symbol mana-symbol-g"></div>
+  </div>
+  <div class="decklist-items">
+    <div class="decklist-item">
+      <div class="card">
+        <div class="card-name"><span>Progenitus</span></div>
+        <div class="mana-cost">
+          <div class="mana-symbol mana-symbol-w"></div>
+          <div class="mana-symbol mana-symbol-w"></div>
+          <div class="mana-symbol mana-symbol-u"></div>
+          <div class="mana-symbol mana-symbol-u"></div>
+          <div class="mana-symbol mana-symbol-b"></div>
+          <div class="mana-symbol mana-symbol-b"></div>
+          <div class="mana-symbol mana-symbol-r"></div>
+          <div class="mana-symbol mana-symbol-r"></div>
+          <div class="mana-symbol mana-symbol-g"></div>
+          <div class="mana-symbol mana-symbol-g"></div>
+        </div>
+      </div>
+    </div>
+    <div class="decklist-item">
+      <div class="card">
+        <div class="card-name"><span>Plains</span></div>
+        <div class="mana-cost">
+        </div>
+      </div>
+    </div>
+    <div class="decklist-item">
+      <div class="card">
+        <div class="card-name"><span>Island</span></div>
+        <div class="mana-cost">
+        </div>
+      </div>
+    </div>
+    <div class="decklist-item">
+      <div class="card">
+        <div class="card-name"><span>Swamp</span></div>
+        <div class="mana-cost">
+        </div>
+      </div>
+    </div>
+    <div class="decklist-item">
+      <div class="card">
+        <div class="card-name"><span>Mountain</span></div>
+        <div class="mana-cost">
+        </div>
+      </div>
+    </div>
+    <div class="decklist-item">
+      <div class="card">
+        <div class="card-name"><span>Forest</span></div>
+        <div class="mana-cost">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </body>
+</html>

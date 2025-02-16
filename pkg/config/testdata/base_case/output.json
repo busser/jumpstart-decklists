@@ -1,0 +1,113 @@
+[
+  {
+    "Name": "Stomp stomp",
+    "Colors": [
+      71
+    ],
+    "Cards": [
+      {
+        "Count": 1,
+        "Card": {
+          "Name": "Llanowar Elves",
+          "ManaCost": [
+            71
+          ]
+        }
+      },
+      {
+        "Count": 1,
+        "Card": {
+          "Name": "Grizzly Bears",
+          "ManaCost": [
+            49,
+            71
+          ]
+        }
+      },
+      {
+        "Count": 1,
+        "Card": {
+          "Name": "Goldvein Hydra",
+          "ManaCost": [
+            88,
+            71
+          ]
+        }
+      },
+      {
+        "Count": 17,
+        "Card": {
+          "Name": "Forest",
+          "ManaCost": null
+        }
+      }
+    ],
+    "Art": "bm90IHJlYWxseSBhbiBpbWFnZSB0byBzYXZlIHNwYWNlLiBHcml6emx5IGJlYXJzIGFyZSBhIHN0YXBsZSBvZiBteSBjaGlsZGhvb2Qu"
+  },
+  {
+    "Name": "Taste the rainbow",
+    "Colors": [
+      87,
+      85,
+      66,
+      82,
+      71
+    ],
+    "Cards": [
+      {
+        "Count": 5,
+        "Card": {
+          "Name": "Progenitus",
+          "ManaCost": [
+            87,
+            87,
+            85,
+            85,
+            66,
+            66,
+            82,
+            82,
+            71,
+            71
+          ]
+        }
+      },
+      {
+        "Count": 3,
+        "Card": {
+          "Name": "Plains",
+          "ManaCost": null
+        }
+      },
+      {
+        "Count": 3,
+        "Card": {
+          "Name": "Island",
+          "ManaCost": null
+        }
+      },
+      {
+        "Count": 3,
+        "Card": {
+          "Name": "Swamp",
+          "ManaCost": null
+        }
+      },
+      {
+        "Count": 3,
+        "Card": {
+          "Name": "Mountain",
+          "ManaCost": null
+        }
+      },
+      {
+        "Count": 3,
+        "Card": {
+          "Name": "Forest",
+          "ManaCost": null
+        }
+      }
+    ],
+    "Art": "bm90IHJlYWxseSBhbiBpbWFnZSB0byBzYXZlIHNwYWNlLiBJdmUgbmV2ZXIgcGxheWVkIFByb2dlbml0dXMsIGJ1dCBpdHMgbWFuYSBjb3N0IHdhcyBhIGdyZWF0IHRlc3Qgd2hlbiB3cml0aW5nIENTUy4="
+  }
+]
