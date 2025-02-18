@@ -57,7 +57,7 @@ You can combine multiple colors. For example, `WUB` is white, blue and black.
 
 Mana costs are written as a sequence of colors and numbers. For example, `2W` is 2 generic mana and 1 white mana.
 
-### Card quantities
+### Card quantities & mana costs
 
 Each card in the decklist has three parts:
 
