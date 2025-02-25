@@ -164,6 +164,12 @@ func makeManaCostItem(symbol rune) (mtg.ManaCostItem, error) {
 		return mtg.ManaCostRed, nil
 	case 'G':
 		return mtg.ManaCostGreen, nil
+	case 'C':
+		return mtg.ManaCostColorless, nil
+	case 'S':
+		return mtg.ManaCostSnow, nil
+	case '0':
+		return mtg.ManaCost0, nil
 	case '1':
 		return mtg.ManaCost1, nil
 	case '2':

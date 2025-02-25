@@ -53,6 +53,13 @@ Colors follow the WUBRG convention:
 - `R`: red
 - `G`: green
 
+Other mana cost symbols are also supported:
+
+- `C`: colorless
+- `S`: snow
+- `0` to `9`: generic mana
+- `X`: variable generic mana
+
 You can combine multiple colors. For example, `WUB` is white, blue and black.
 
 Mana costs are written as a sequence of colors and numbers. For example, `2W` is 2 generic mana and 1 white mana.

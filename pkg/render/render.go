@@ -120,6 +120,12 @@ func mtgManaCostItemToString(item mtg.ManaCostItem) string {
 		return "r"
 	case mtg.ManaCostGreen:
 		return "g"
+	case mtg.ManaCostColorless:
+		return "c"
+	case mtg.ManaCostSnow:
+		return "s"
+	case mtg.ManaCost0:
+		return "0"
 	case mtg.ManaCost1:
 		return "1"
 	case mtg.ManaCost2:
