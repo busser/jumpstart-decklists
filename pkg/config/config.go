@@ -180,6 +180,8 @@ func makeManaCostItem(symbol rune) (mtg.ManaCostItem, error) {
 		return mtg.ManaCost7, nil
 	case '8':
 		return mtg.ManaCost8, nil
+	case '9':
+		return mtg.ManaCost9, nil
 	case 'X':
 		return mtg.ManaCostX, nil
 	default:
