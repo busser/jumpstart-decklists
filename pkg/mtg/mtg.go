@@ -25,8 +25,10 @@ const (
 	ManaCost4     = '4'
 	ManaCost5     = '5'
 	ManaCost6     = '6'
+	ManaCost7     = '7'
+	ManaCost8     = '8'
 	ManaCostX     = 'X'
-	// TODO(busser): support 7+ and colorless
+	// TODO(busser): support 0, 9+, colorless, and hybrid
 )
 
 type Card struct {

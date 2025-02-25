@@ -132,6 +132,10 @@ func mtgManaCostItemToString(item mtg.ManaCostItem) string {
 		return "5"
 	case mtg.ManaCost6:
 		return "6"
+	case mtg.ManaCost7:
+		return "7"
+	case mtg.ManaCost8:
+		return "8"
 	case mtg.ManaCostX:
 		return "x"
 	default:
